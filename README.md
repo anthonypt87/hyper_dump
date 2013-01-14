@@ -24,5 +24,6 @@ hyper_dump is a small module for downloading songs from [Hype Machine](http://ww
 ## Example
 	python -u anthonypt87 -o ~anthony/mp3s -m 2 -v
 This will download the first two pages of user anthonypt87's songs to ~anthony/mp3s in verbose mode.
+
 	python -u hyperdump -o ~anthony/mp3s
 This will download all of user hyperdump's songs to ~anthony/mp3s.
