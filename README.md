@@ -1,4 +1,5 @@
 # hyper_dump
+hyper_dump is a small module for downloading songs from [Hype Machine][http://www.hypem.com].
 
 ## Hype machine downloader
 
