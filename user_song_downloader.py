@@ -74,7 +74,7 @@ class SongDownloader(object):
 			return string.replace('/', '')
 		normalized_artist_name = normalize_string(song.artist)
 		normalized_title = normalize_string(song.title)
-		return '{artist} - {title}.mp3'.format(artist=normalized_artist_name, title=normalized_title)
+		return u'{artist} - {title}.mp3'.format(artist=normalized_artist_name, title=normalized_title)
 
 class Page(object):
 	def __init__(self, songs):
