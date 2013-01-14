@@ -147,6 +147,25 @@ class SongDownloaderTest(unittest.TestCase):
 			mock_exists.assert_called_once_with('directory/I - Download Songs.mp3')
 			assert not self.mock_open.called
 
+	def test_slashes_are_removed_from_output_file_name(self):
+		self.song.artist = '/////I'
+		self.song.title = 'Download/ ///Songs'
+		song_downloader = user_song_downloader.SongDownloader('directory')
+		with mock.patch('user_song_downloader.requests.get', return_value=mock.Mock(content='data')) as mock_get:
+			song_downloader.download_songs_from_page(self.page)
+			mock_get.assert_called_with(
+				'http://hypem.com/serve/play/some_id/some_key.mp3',
+				cookies=self.song.cookies
+			)
+
+			self.mock_open.assert_called_with(
+				'directory/I - Download Songs.mp3',
+				'w'
+			)
+			self.mock_file.write.assert_called_with(
+				'data'
+			)
+
 
 class PageTest(unittest.TestCase):
 

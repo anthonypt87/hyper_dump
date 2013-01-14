@@ -54,7 +54,7 @@ class SongDownloader(object):
 		for song in page.songs:
 			logger.info('Downloading song %s - %s' % (song.artist, song.title))
 
-			song_filename = '{artist} - {title}.mp3'.format(artist=song.artist, title=song.title)
+			song_filename = self._get_song_filename(song)
 			song_path = os.path.join(self._output_directory, song_filename) 
 
 			if os.path.exists(song_path):
@@ -69,6 +69,12 @@ class SongDownloader(object):
 			with open(song_path, 'w') as song_file:
 				song_file.write(song_data.content)
 
+	def _get_song_filename(self, song):
+		def normalize_string(string):
+			return string.replace('/', '')
+		normalized_artist_name = normalize_string(song.artist)
+		normalized_title = normalize_string(song.title)
+		return '{artist} - {title}.mp3'.format(artist=normalized_artist_name, title=normalized_title)
 
 class Page(object):
 	def __init__(self, songs):
