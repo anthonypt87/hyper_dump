@@ -1,6 +1,10 @@
 # hyper_dump
 hyper_dump is a small module for downloading songs from [Hype Machine](http://www.hypem.com).
 
+## Requirements
+	[BeautifulSoup](http://www.crummy.com/software/BeautifulSoup/)
+	[Requests](http://docs.python-requests.org/en/latest/)
+
 ## Usage
 
 	usage: hyper_dump.py [-h] [-u USERNAME] [-o OUTPUT_DIRECTORY] [-m MAX_PAGES]
