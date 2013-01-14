@@ -22,18 +22,25 @@ class UserSongDownloader(object):
 		self._output_directory = output_directory
 
 	def download_from_user(self, username, max_pages):
+		"""Downloads songs to `self._output_directory` for a particular username
+		Args:
+			username -- username of user to download songs from
+			max_pages -- int denoting number of pages to download. If None, downloads all songs
+		"""
 		logger.info('Downloading songs to directory: %s' % self._output_directory)
 		song_downloader = SongDownloader(self._output_directory)
 
 		current_page_number = 1
-		while current_page_number <= max_pages:
-			logger.info('Working on page %s of %s' % (current_page_number, max_pages))
+		while current_page_number <= max_pages or max_pages is None:
+			logger.info('Working on page %s' % (current_page_number))
+
 			page = Page.get_page(username, current_page_number)
-			if not page:
+			if page is None:
 				logger.info(
 					"Page %s doesn't exist. %s was probably the last page. We're finished!" % (current_page_number, current_page_number - 1)
 				)
 				break
+
 			song_downloader.download_songs_from_page(page)
 			current_page_number += 1
 

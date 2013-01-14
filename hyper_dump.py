@@ -5,7 +5,6 @@ import user_song_downloader
 
 DEFAULT_USERNAME = 'popular'
 DEFAULT_OUTPUT_DIRECTORY = 'mp3s'
-DEFAULT_PAGES_TO_DOWNLOAD = 1
 
 def get_args():
 	parser = argparse.ArgumentParser(description="Download hype machine songs")
@@ -24,9 +23,9 @@ def get_args():
 	parser.add_argument(
 		'-m',
 		'--max-pages', 
-		help='Number of pages of songs to download (default=%s)' % DEFAULT_PAGES_TO_DOWNLOAD, 
+		help='Number of pages of songs to download. If unset, downloads all songs',
 		type=int, 
-		default=DEFAULT_PAGES_TO_DOWNLOAD
+		default=None
 	)
 	parser.add_argument(
 		'-v', 

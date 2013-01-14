@@ -80,6 +80,23 @@ class UserSongDownloaderUnitTest(unittest.TestCase):
 			self.mock_page
 		)
 
+	def test_downloads_all_if_max_pages_is_none(self):
+		downloader = user_song_downloader.UserSongDownloader('mock_directory')
+		self.mock_get_page.side_effect = [self.mock_page, self.mock_page, None]
+		downloader.download_from_user(
+			username='hyperdump',
+			max_pages=None
+		)
+
+		assert self.mock_get_page.call_count == 3
+		for page in range(1,4):
+			self.mock_get_page.assert_any_call(
+				'hyperdump',
+				page
+			)
+
+		assert self.mock_download_songs_from_page.call_count == 2
+
 
 class SongDownloaderTest(unittest.TestCase):
 
