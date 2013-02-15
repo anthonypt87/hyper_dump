@@ -17,7 +17,7 @@ logger = get_logger()
 
 
 class UserSongDownloader(object):
-	
+
 	def __init__(self, output_directory):
 		self._output_directory = output_directory
 
@@ -55,7 +55,7 @@ class SongDownloader(object):
 			logger.info('Downloading song %s - %s' % (song.artist, song.title))
 
 			song_filename = self._get_song_filename(song)
-			song_path = os.path.join(self._output_directory, song_filename) 
+			song_path = os.path.join(self._output_directory, song_filename)
 
 			if os.path.exists(song_path):
 				logger.info('%s already exists' % song_path)
@@ -86,7 +86,7 @@ class Page(object):
 				'http://hypem.com/{username}/{page_number}'.format(username=username, page_number=page_number),
 				params={
 					# By default, hypem pages load the songs via some AJAX.
-					# ax=1 renders the page in a minimal way, loading the 
+					# ax=1 renders the page in a minimal way, loading the
 					# song information in advance
 					'ax': 1
 				}
