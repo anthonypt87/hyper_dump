@@ -83,13 +83,13 @@ class Page(object):
 	@classmethod
 	def get_page(cls, username, page_number):
 		page_request = requests.get(
-				'http://hypem.com/{username}/{page_number}'.format(username=username, page_number=page_number),
-				params={
-					# By default, hypem pages load the songs via some AJAX.
-					# ax=1 renders the page in a minimal way, loading the
-					# song information in advance
-					'ax': 1
-				}
+			'http://hypem.com/{username}/{page_number}'.format(username=username, page_number=page_number),
+			params={
+				# By default, hypem pages load the songs via some AJAX.
+				# ax=1 renders the page in a minimal way, loading the
+				# song information in advance
+				'ax': 1
+			}
 		)
 		soup = BeautifulSoup(page_request.text)
 		display_list = soup.find(id='displayList-data')
