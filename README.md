@@ -26,7 +26,7 @@ hyper_dump is a small module for downloading songs from [Hype Machine](http://ww
 		-v, --verbose         Verbose mode
 
 ## Example
-	python hypeer_dump.py -u anthonypt87 -o ~anthony/mp3s -m 2 -v
+	python hyper_dump.py -u anthonypt87 -o ~anthony/mp3s -m 2 -v
 This will download the first two pages of user anthonypt87's songs to ~anthony/mp3s in verbose mode.
 
 	python hyper_dump.py -u hyperdump -o ~anthony/mp3s
